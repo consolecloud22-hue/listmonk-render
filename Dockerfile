@@ -1,4 +1,7 @@
 FROM listmonk/listmonk:latest
 
-# Force Listmonk to launch while strictly honoring standard environment variables
+# Hard-override the image engine route so it executes the app executable directly
+ENTRYPOINT ["/listmonk/listmonk"]
+
+# Feed parameter variables directly to the app layer safely
 CMD ["--config", "", "--install", "--idempotent", "--yes"]
