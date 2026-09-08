@@ -1,7 +1,5 @@
 FROM listmonk/listmonk:latest
-
-# Hard-override the image engine route so it executes the app executable directly
+# Bind the core binary execution paths
 ENTRYPOINT ["/listmonk/listmonk"]
-
-# Feed parameter variables directly to the app layer safely
+# Pass the required database overrides down directly on startup
 CMD ["--config", "", "--install", "--idempotent", "--yes"]
