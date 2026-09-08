@@ -5,6 +5,8 @@ services:
     repo: https://github.com/consolecloud22-hue/listmonk-render
     plan: free
     envVars:
+      - key: PORT
+        value: 9000
       - key: LISTMONK_db__uri
         value: postgresql://listmonk_db_7912_user:p32H6sfcGItB9rf4e6E2GRbD5Wbwyz6W@://render.com
       - key: LISTMONK_app__admin_username
