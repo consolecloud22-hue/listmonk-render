@@ -6,9 +6,10 @@ ENV LISTMONK_app__admin_username="admin"
 ENV LISTMONK_app__admin_password="YourSecurePassword123"
 ENV PORT="9000"
 
-# FORCE DELETE the default template configuration file so Listmonk must read our ENV vars above
-RUN rm -f config.toml
+# FORCE create a dummy empty file to satisfy listmonk's internal file system check
+RUN touch config.toml
 
 ENTRYPOINT ["/listmonk/listmonk"]
 
-CMD ["--install", "--idempotent", "--yes"]
+# By dropping the blank --config quote and using --static-dir, we force env parsing
+CMD ["--install", "--idempotent", "--yes", "--static-dir", "."]
